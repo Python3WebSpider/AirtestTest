@@ -60,9 +60,7 @@ def main():
     while len(scraped_titles) < TOTAL_NUMBER:
         elements = scrape_index()
         for element in elements:
-            print(element)
             element_title = element.offspring(f'{PACKAGE_NAME}:id/tv_title')
-            print('title', element_title)
             if not element_title.exists():
                 continue
             title = element_title.attr('text')
@@ -73,6 +71,7 @@ def main():
             if element_y > 0.7:
                 scroll_up()
             element_data = scrape_detail(element)
+            logger.debug(f'scraped data {element_data}')
             save_data(element_data)
             scraped_titles.append(title)
 

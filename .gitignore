@@ -2,3 +2,8 @@
 .vscode
 *.pyc
 .DS_Store
+
+movie/*
+!movie/*.json
+
+app-debug.apk
